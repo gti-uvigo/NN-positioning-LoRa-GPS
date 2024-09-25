@@ -799,6 +799,19 @@ if __name__ == "__main__":
     consider_invalid_rssi_array = [False]
     altitudes_minmax_array = [[None, None]]
 
+    use_validation = False
+    all_algorithms = False
+    time_interval_gps_array = [900] # in seconds
+    time_interval_gps_train_array = [900]
+    nn_neurons_array = [10]
+    nn_epochs_array = [4000]
+
+    # Gateway positions
+    lat_lon_alt_gw1 = (42.46972, -9.01345, 73)
+    lat_lon_alt_gw2 = (42.49955, -9.00654, 5)
+    lat_lon_alt_gw3 = (42.50893, -9.04902, 31)
+
+
     #######################################################################################################################
     ####################################### Experiment 1 configuration ####################################################
     #######################################################################################################################
@@ -848,11 +861,6 @@ if __name__ == "__main__":
                 for multiple_replicas_interval in multiple_replicas_interval_array:
                     for consider_invalid_rssi in consider_invalid_rssi_array:
                         for alt_min, alt_max in altitudes_minmax_array:
-                            # Gateway positions
-                            lat_lon_alt_gw1 = (42.46972, -9.01345, 73)
-                            lat_lon_alt_gw2 = (42.49955, -9.00654, 5)
-                            lat_lon_alt_gw3 = (42.50893, -9.04902, 31)
-
                             random.seed(random_seed)
 
                             gw1_xyz = get_xy_from_latlon(lat_lon_alt_gw1[0], lat_lon_alt_gw1[1]) + [lat_lon_alt_gw1[2]]
